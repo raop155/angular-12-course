@@ -14,7 +14,6 @@ export class SidebarComponent {
   constructor(private gifsService: GifsService) { }
 
   buscar(query: string): void {
-    console.log(query);
     this.gifsService.buscarGifs(query);
   }
 
