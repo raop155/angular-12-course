@@ -23,11 +23,11 @@ export class GifsService {
 
   buscarGifs(query: string = ""): void {
     query = query.trim().toLowerCase();
-    if (this._historial.includes(query)) return;
-
-    this._historial.unshift(query);
-    this._historial = this.historial.splice(0, 10);
-    localStorage.setItem("historial", JSON.stringify(this._historial))
+    if (!this._historial.includes(query)) {
+      this._historial.unshift(query);
+      this._historial = this.historial.splice(0, 10);
+      localStorage.setItem("historial", JSON.stringify(this._historial))
+    }
 
     this.http.get<SearchGifsResponse>(`https://api.giphy.com/v1/gifs/search?api_key=${this.apiKey}&q=${query}&limit=10`)
     .subscribe( (response) => {
@@ -36,7 +36,6 @@ export class GifsService {
       localStorage.setItem("resultados", JSON.stringify(this.resultados))
 
     })
-
   }
 
 
