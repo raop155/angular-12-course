@@ -2,5 +2,10 @@
   <h1>{{nombre | uppercase}}</h1>
 </div>
 
-<button pButton (click)="mostrarNombre()" label="Cambiar nombre">
+<button pButton (click)="mostrarNombre()" label="Cambiar nombre" icon="pi pi-check" iconPos="right"
+  class="p-button-help">
 </button>
+
+<p-card [header]="nombre | titlecase" subheader="sub header">
+  Content
+</p-card>
